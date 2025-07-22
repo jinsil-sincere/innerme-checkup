@@ -41,16 +41,33 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 
+
 function saveAsImage() {
-  html2canvas(document.body).then(canvas => {
+  const element = document.getElementById('result-content');
+  const options = {
+    scale: 2, 
+    useCORS: true,
+    backgroundColor: '#ffffff', 
+    width: element.scrollWidth,
+    height: element.scrollHeight,
+    scrollX: 0,
+    scrollY: 0
+  };
+  html2canvas(element, options).then(canvas => {
     const link = document.createElement('a');
+    link.download = `InnerMe_Checkup_결과_${new Date().toLocaleDateString('ko-KR')}.png`;
     link.href = canvas.toDataURL('image/png');
-    link.download = 'InnerMe_Checkup_Report.png';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }).catch(error => {
+    console.error('이미지 저장 중 오류가 발생했습니다:', error);
+    alert('이미지 저장에 실패했습니다. 다시 시도해 주세요.');
   });
 }
+
+
+
 
 
 function shareResults() {
