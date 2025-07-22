@@ -61,29 +61,24 @@ function saveAsImage() {
   });
 }
 
+
 function shareResults() {
   const url = window.location.href.replace('results.html', 'index.html');
   const textArea = document.createElement('textarea');
   textArea.value = url;
   document.body.appendChild(textArea);
   textArea.select();
-  
   try {
     document.execCommand('copy');
     document.body.removeChild(textArea);
-    
-    const msg = document.getElementById('share-message');
-    msg.textContent = '공유 링크가 복사되었습니다!';
-    msg.style.display = 'block';
-    setTimeout(() => msg.style.display = 'none', 2000);
   } catch (err) {
     document.body.removeChild(textArea);
-    
     const msg = document.getElementById('share-message');
-    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해서 공유해주세요`;
+    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해서 공유하세요`;
     msg.style.display = 'block';
   }
 }
+
 
 window.saveAsImage = saveAsImage;
 window.shareResults = shareResults;
