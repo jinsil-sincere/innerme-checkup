@@ -39,3 +39,16 @@ document.querySelectorAll('.result-age').forEach(el => el.classList.remove('acti
 const avgScore = scores.reduce((acc, score) => acc + score, 0) / scores.length;
 document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.result-age2' : avgScore < 7.5 ? '.result-age3' : '.result-age4').classList.add('active');
 
+
+
+function saveAsImage() {
+  html2canvas(document.body).then(canvas => {
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'InnerMe_Checkup_Report.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
