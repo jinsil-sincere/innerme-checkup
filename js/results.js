@@ -44,15 +44,14 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 function saveAsImage() {
-  const element = document.getElementById('result-content');
-  
+  const element = document.body;
   html2canvas(element, {
     scale: 2,
     useCORS: true,
     backgroundColor: '#ffffff'
   }).then(canvas => {
     const link = document.createElement('a');
-    link.download = 'InnerMe_Checkup_결과.png';
+    link.download = 'InnerMe_Checkup_Report.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   }).catch(error => {
