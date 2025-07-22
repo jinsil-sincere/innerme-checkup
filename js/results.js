@@ -85,5 +85,7 @@ function shareResults() {
   }
 }
 
+window.saveAsImage = saveAsImage;
+window.shareResults = shareResults;
 
 
