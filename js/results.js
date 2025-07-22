@@ -63,7 +63,7 @@ function saveAsImage() {
     shareBtn.style.display = 'flex';
     
     const link = document.createElement('a');
-    link.download = 'InnerMe_Checkup_결과.png';
+    link.download = 'InnerMe_Checkup_Report.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   }).catch(error => {
@@ -88,7 +88,7 @@ function shareResults() {
   } catch (err) {
     document.body.removeChild(textArea);
     const msg = document.getElementById('share-message');
-    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해서 공유하세요`;
+    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해주세요`;
     msg.style.display = 'block';
   }
 }
