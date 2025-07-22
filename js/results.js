@@ -41,7 +41,6 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 
-
 function saveAsImage() {
   const element = document.getElementById('result-content');
   const options = {
@@ -83,3 +82,7 @@ function shareResults() {
       setTimeout(() => msg.style.display = 'none', 3000);
     });
 }
+
+
+
+
