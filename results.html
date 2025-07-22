@@ -10,9 +10,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/results.css">
-  <script type="module" defer src="./js/results.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" defer src="./js/results.js"></script>
+  
 </head>
 <body>
 <div id="result-content">
@@ -172,7 +173,7 @@
   </div>
   <div class="save-image-container">
     <div class="btn-save" onclick="saveAsImage()">이미지로 저장하기</div>
-    <div class="btn-share" onclick="copyLink()">주위에 알리기</div>
+    <div class="btn-share" onclick="shareResults()">주위에 알리기</div>
     <div id="share-message" style="display: none; color: #999999; margin-top: 10px; text-align: center; font-size: 13px;"></div>
   </div>
   
