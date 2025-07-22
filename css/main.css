@@ -1,12 +1,10 @@
  .page-subtitle {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #c9c8c8;
 
   max-width: 200px;
   height: 33px;
-  border: 1px solid #E5E5E5;
-  border-radius: 5px;
 
   display: flex;
   justify-content: center;
