@@ -75,13 +75,13 @@ function saveAsImage() {
   });
 }
 
-function shareResults() {
+function share() {
   navigator.clipboard.writeText('https://innerme-checkup.netlify.app/');
 }
 
 
 window.saveAsImage = saveAsImage;
-window.shareResults = shareResults;
+window.share = share;
 
 
 
