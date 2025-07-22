@@ -343,7 +343,7 @@ function createChartAnalysis(scores) {
         analysisText += `점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakestDomains.join("', '")}'</span> 영역들에 더 많은 관심을 기울여보세요.`;
       }
     } else {
-      analysisText += `점수가 비교적 균형 잡혀 있습니다. 모든 영역에서 고르게 발전하고 있습니다.`;
+      analysisText += `모든 영역에서 고르게 발전하고 있습니다.`;
     }
     analysisBox.innerHTML = analysisText;
   }
