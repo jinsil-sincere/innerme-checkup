@@ -75,22 +75,8 @@ function saveAsImage() {
   });
 }
 
-
 function shareResults() {
-  const url = window.location.href.replace('results.html', 'index.html');
-  const textArea = document.createElement('textarea');
-  textArea.value = url;
-  document.body.appendChild(textArea);
-  textArea.select();
-  try {
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-  } catch (err) {
-    document.body.removeChild(textArea);
-    const msg = document.getElementById('share-message');
-    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해주세요`;
-    msg.style.display = 'block';
-  }
+  navigator.clipboard.writeText('https://innerme-checkup.netlify.app/');
 }
 
 
