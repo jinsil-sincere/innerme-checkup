@@ -259,15 +259,13 @@
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 15px;
+  word-break: keep-all;
 }
-
-
 .chart-analysis .highlight-strength {
   color: #709ac8;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 16.5px;
 }
-
 .chart-analysis p {
   margin: 0 0 12px 0;
   color: #333333;
@@ -275,7 +273,6 @@
   font-size: 16px;
   line-height: 1.6;
 }
-
 .chart-analysis p:last-child {
   margin-bottom: 0;
 }
@@ -283,22 +280,20 @@
 
 @media (max-width: 480px) {
   .chart-analysis {
-    font-size: 14px;
+    font-size: 15px;
     padding: 14px 16px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     line-height: 1.5;
   }
-  
   .chart-analysis p {
     font-size: 14px;
     margin: 0 0 8px 0;
     line-height: 1.5;
   }
-  
   .chart-analysis .highlight-strength {
-    font-size: 14px;
+    font-size: 15.5px;
   }
 }
 
