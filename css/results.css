@@ -239,3 +239,17 @@
   background-color: #e0e0e0;
   font-weight: 600;
 }
+
+
+
+.chart-analysis .highlight-strength {
+  color: #709ac8;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+@media (max-width: 500px) {
+  .chart-analysis .highlight-strength {
+    font-size: 15px;
+  }
+}
