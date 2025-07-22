@@ -52,3 +52,20 @@ function saveAsImage() {
   });
 }
 
+
+function shareResults() {
+  navigator.clipboard.writeText(window.location.origin + '/index.html')
+    .then(() => {
+      const msg = document.getElementById('share-message');
+      msg.textContent = '공유 링크가 복사되었습니다!';
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    })
+    .catch(() => {
+      const msg = document.getElementById('share-message');
+      msg.textContent = '링크 복사에 실패했습니다. 브라우저 주소창에서 링크를 복사해주세요.';
+      msg.style.display = 'block';
+      msg.style.color = 'red';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    });
+}
