@@ -202,6 +202,15 @@
   font-weight: 600;
 }
 
+.save-image-container {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+}
+
+
+
 
 .btn-share{
   font-size: 14px; 
