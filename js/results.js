@@ -87,6 +87,211 @@ window.share = share;
 
 
 
+
+
+
+
+function createRadarChart(scores) {
+  const canvas = document.getElementById('radarChart');
+  if (!canvas) {
+    console.error('radarChart canvas not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  const labels = ['감정 <br> 돌보기', '유연하게 <br> 생각하기', '자기 <br> 수용하기', '편안한 <br> 관계맺기', '삶의 방향 <br> 세우기'];
+  
+  const isMobile = window.innerWidth <= 768;
+  const width = isMobile ? 300 : 350;
+  const height = isMobile ? 300 : 350;
+  
+  canvas.width = width;
+  canvas.height = height;
+  
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const radius = Math.min(width, height) * 0.35;
+  
+  ctx.strokeStyle = '#e0e0e0';
+  ctx.lineWidth = 1;
+  for (let i = 1; i <= 5; i++) {
+    const currentRadius = (radius / 10) * i * 2; 
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, currentRadius, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  
+  ctx.strokeStyle = '#e0e0e0';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 5; i++) {
+    const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY + Math.sin(angle) * radius;
+    
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
+  
+  ctx.fillStyle = 'rgba(112, 154, 200, 0.8)';
+  ctx.strokeStyle = 'rgba(112, 154, 200, 1)';
+  ctx.lineWidth = 2;
+  
+  ctx.beginPath();
+  for (let i = 0; i < scores.length; i++) {
+    const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const scoreRadius = (scores[i] / 10) * radius; 
+    const x = centerX + Math.cos(angle) * scoreRadius;
+    const y = centerY + Math.sin(angle) * scoreRadius;
+    
+    if (i === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  
+
+  ctx.fillStyle = 'rgba(112, 154, 200, 1)';
+  for (let i = 0; i < scores.length; i++) {
+    const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const scoreRadius = (scores[i] / 10) * radius; 
+    const x = centerX + Math.cos(angle) * scoreRadius;
+    const y = centerY + Math.sin(angle) * scoreRadius;
+    
+    ctx.beginPath();
+    ctx.arc(x, y, 4, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+  
+  ctx.fillStyle = '#373b42';
+  ctx.font = '400 12px Arial';
+  ctx.textAlign = 'center';
+  for (let i = 0; i < labels.length; i++) {
+    const angle = (i * 2 * Math.PI / 5) - Math.PI / 2;
+    const labelRadius = radius + 20;
+    const x = centerX + Math.cos(angle) * labelRadius;
+    const y = centerY + Math.sin(angle) * labelRadius + 4;
+    
+    ctx.fillText(labels[i], x, y);
+  }
+}
+
+console.log('Creating radar chart with scores:', scores);
+createRadarChart(scores);
+createChartAnalysis(scores);
+
+function createRadarChart(scores) {
+    const canvas = document.getElementById('radarChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    
+    const centerX = canvas.width / dpr / 2;
+    const centerY = canvas.height / dpr / 2;
+    
+    const radius = Math.min(centerX, centerY) - 70;
+    const labelOffset = 45;
+    
+    const labels = [
+      '나를\n수용하기', 
+      '삶의 방향\n세우기', 
+      '편안한\n관계맺기', 
+      '유연하게\n생각하기', 
+      '감정\n돌보기'
+    ];
+    const colors = ['#709ac8', '#a1c3e8', '#cae1fb', '#e8f2ff', '#f0f8ff'];
+    
+    ctx.strokeStyle = '#e0e0e0';
+    ctx.lineWidth = 1;
+    for (let i = 1; i <= 5; i++) {
+      const r = (radius / 5) * i;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, r, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+    
+    ctx.strokeStyle = '#cccccc';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < labels.length; i++) {
+      const angle = (i * 2 * Math.PI) / labels.length - Math.PI / 2;
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+      
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+
+      ctx.fillStyle = '#000000';
+      ctx.font = '300 14px Arial'; // 12px에서 14px로 증가
+      ctx.textAlign = 'center';
+      const labelX = centerX + Math.cos(angle) * (radius + labelOffset);
+      let labelY = centerY + Math.sin(angle) * (radius + labelOffset);
+      
+      if (i === 0) { // 나를 수용하기
+        labelY += 25;
+      } else if (i === 1) { // 삶의 방향 세우기
+        labelY += 8;
+      } else if (i === 2) { // 편안한 관계맺기
+        labelY += 8;
+      } else if (i === 3) { // 유연하게 생각하기
+        labelY += 8;
+      } else if (i === 4) { // 감정 돌보기
+        labelY += 25;
+      }
+      
+      const labelLines = labels[i].split('\n');
+      const lineHeight = 15; 
+      labelLines.forEach((line, index) => {
+        const lineY = labelY + (index - 0.5) * lineHeight;
+        ctx.fillText(line, labelX, lineY);
+      });
+    }
+    
+    ctx.fillStyle = 'rgba(112, 154, 200, 0.3)';
+    ctx.strokeStyle = '#709ac8';
+    ctx.lineWidth = 2;
+    
+    const reorderedScores = [
+      scores[2], 
+      scores[4], 
+      scores[3], 
+      scores[1], 
+      scores[0]  
+    ];
+    
+    ctx.beginPath();
+    for (let i = 0; i < reorderedScores.length; i++) {
+      const angle = (i * 2 * Math.PI) / reorderedScores.length - Math.PI / 2;
+      const r = (reorderedScores[i] / 10) * radius; 
+      const x = centerX + Math.cos(angle) * r;
+      const y = centerY + Math.sin(angle) * r;
+      
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+}
+
+
+
 function createChartAnalysis(scores) {
     const analysisBox = document.getElementById('chart-analysis');
     if (!analysisBox) return;
