@@ -235,20 +235,20 @@ function createRadarChart(scores) {
       ctx.stroke();
 
       ctx.fillStyle = '#000000';
-      ctx.font = '300 14px Arial'; // 12px에서 14px로 증가
+      ctx.font = '300 14px Arial';
       ctx.textAlign = 'center';
       const labelX = centerX + Math.cos(angle) * (radius + labelOffset);
       let labelY = centerY + Math.sin(angle) * (radius + labelOffset);
       
-      if (i === 0) { // 나를 수용하기
+      if (i === 0) { 
         labelY += 25;
-      } else if (i === 1) { // 삶의 방향 세우기
+      } else if (i === 1) { 
         labelY += 8;
-      } else if (i === 2) { // 편안한 관계맺기
+      } else if (i === 2) {
         labelY += 8;
-      } else if (i === 3) { // 유연하게 생각하기
+      } else if (i === 3) { 
         labelY += 8;
-      } else if (i === 4) { // 감정 돌보기
+      } else if (i === 4) { 
         labelY += 25;
       }
       
@@ -289,6 +289,11 @@ function createRadarChart(scores) {
     ctx.fill();
     ctx.stroke();
 }
+
+const isMobile = window.innerWidth <= 768;
+const isSmallMobile = window.innerWidth <= 480;
+const fontSize = isSmallMobile ? 11 : isMobile ? 12 : 14;
+const fontSize = isSmallMobile ? 11 : isMobile ? 12 : 14;
 
 
 
@@ -342,5 +347,6 @@ function createChartAnalysis(scores) {
     }
     analysisBox.innerHTML = analysisText;
   }
+
 
 
