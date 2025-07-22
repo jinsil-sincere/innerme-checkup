@@ -67,9 +67,6 @@ function saveAsImage() {
 }
 
 
-
-
-
 function shareResults() {
   navigator.clipboard.writeText(window.location.origin + '/index.html')
     .then(() => {
