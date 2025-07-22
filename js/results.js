@@ -39,7 +39,16 @@ function createRadarChart(scores) {
   
   const ctx = canvas.getContext('2d');
   const size = window.innerWidth <= 480 ? 300 : window.innerWidth <= 768 ? 300 : 350;
-  
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  canvas.style.display = 'block';
+  canvas.style.margin = '0 auto';
+  ctx.scale(dpr, dpr);
+  const center = size / 2;
+
   canvas.width = canvas.height = size;
   canvas.style.display = 'block';
   canvas.style.margin = '0 auto';
@@ -67,7 +76,7 @@ function createRadarChart(scores) {
     ctx.stroke();
     
     ctx.fillStyle = '#000';
-    ctx.font = `${size <= 300 ? 12 : 12}px Arial`;
+    ctx.font = `${size <= 300 ? 11.5 : 12}px Arial`;
     ctx.textAlign = 'center';
     
     const labelX = center + Math.cos(angle) * (radius + 30);
