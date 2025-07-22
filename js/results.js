@@ -1,4 +1,3 @@
-
 const responses = JSON.parse(localStorage.getItem("innermeResponses")) || {};
 
 const domains = [
@@ -25,13 +24,17 @@ domains.forEach(domain => {
   
   const rank = Math.max(1, Math.min(100, Math.round((1 - normalCDF((score - domain.mean) / domain.sd)) * 100)));
   
-  document.querySelector(`.result-score.result-${domain.name} .big-score`).textContent = score;
-  document.querySelector(`.result-level.result-${domain.name} strong`).textContent = `${rank}등`;
+  const scoreElement = document.querySelector(`.result-score.result-${domain.name} .big-score`);
+  const rankElement = document.querySelector(`.result-level.result-${domain.name} strong`);
+  
+  if (scoreElement) scoreElement.textContent = score;
+  if (rankElement) rankElement.textContent = `${rank}등`;
 });
 
 document.querySelectorAll('.result-age').forEach(el => el.classList.remove('active'));
 const avgScore = scores.reduce((a, b) => a + b) / 5;
-document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.result-age2' : avgScore < 7.5 ? '.result-age3' : '.result-age4').classList.add('active');
+const ageElement = document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.result-age2' : avgScore < 7.5 ? '.result-age3' : '.result-age4');
+if (ageElement) ageElement.classList.add('active');
 
 function createRadarChart(scores) {
   const canvas = document.getElementById('radarChart');
@@ -39,6 +42,7 @@ function createRadarChart(scores) {
   
   const ctx = canvas.getContext('2d');
   const size = window.innerWidth <= 480 ? 300 : window.innerWidth <= 768 ? 300 : 350;
+  
   const dpr = window.devicePixelRatio || 1;
   canvas.width = size * dpr;
   canvas.height = size * dpr;
@@ -47,11 +51,6 @@ function createRadarChart(scores) {
   canvas.style.display = 'block';
   canvas.style.margin = '0 auto';
   ctx.scale(dpr, dpr);
-  const center = size / 2;
-
-  canvas.width = canvas.height = size;
-  canvas.style.display = 'block';
-  canvas.style.margin = '0 auto';
   
   const center = size / 2;
   const radius = center - 80;
@@ -76,7 +75,7 @@ function createRadarChart(scores) {
     ctx.stroke();
     
     ctx.fillStyle = '#000';
-    ctx.font = `${size <= 300 ? 11.5 : 12}px Arial`;
+    ctx.font = '12px Arial';
     ctx.textAlign = 'center';
     
     const labelX = center + Math.cos(angle) * (radius + 30);
@@ -111,7 +110,7 @@ function createChartAnalysis(scores) {
   const names = ['감정 돌보기', '유연하게 생각하기', '나를 수용하기', '편안한 관계맺기', '삶의 방향 세우기'];
   const max = Math.max(...scores);
   const min = Math.min(...scores);
-  const avg = Math.round(scores.reduce((a, b) => a + b) *2);
+  const avg = Math.round(scores.reduce((a, b) => a + b) * 2);
 
   const strongest = scores.map((s, i) => s === max ? names[i] : null).filter(Boolean);
   const weakest = scores.map((s, i) => s === min ? names[i] : null).filter(Boolean);
