@@ -172,3 +172,61 @@
 
 
 
+
+
+.btn-save{
+  font-size: 14px; 
+  font-weight: 400;
+  color: #545454;
+  text-decoration: none;
+
+  width: 100%;
+  max-width: 200px;
+  height: 36px;
+  background-color: #cae1fb;
+  border-radius: 5px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+  transition: 0.1s;
+}
+.btn-save:hover{
+  background-color: #a1c3e8;
+  font-weight: 600;
+}
+
+
+.btn-share{
+  font-size: 14px; 
+  font-weight: 400;
+  color: #545454;
+  text-decoration: none;
+
+  width: 100%;
+  max-width: 200px;
+  height: 36px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+  transition: 0.1s;
+}
+.btn-share:hover{
+  background-color: #e0e0e0;
+  font-weight: 600;
+}
