@@ -259,7 +259,6 @@
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 15px;
-  word-break: keep-all;
 }
 .chart-analysis .highlight-strength {
   color: #709ac8;
@@ -280,7 +279,7 @@
 
 @media (max-width: 480px) {
   .chart-analysis {
-    font-size: 15px;
+    font-size: 14.5px;
     padding: 14px 16px;
     margin-left: 10px;
     margin-right: 10px;
@@ -293,19 +292,7 @@
     line-height: 1.5;
   }
   .chart-analysis .highlight-strength {
-    font-size: 15.5px;
-  }
-}
-
-/* .chart-analysis .highlight-strength {
-  color: #709ac8;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.3;
-}
-
-@media (max-width: 500px) {
-  .chart-analysis .highlight-strength {
     font-size: 15px;
   }
-} */
+}
+
