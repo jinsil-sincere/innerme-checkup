@@ -43,20 +43,52 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 
+// function saveAsImage() {
+//   const element = document.body;
+//   html2canvas(element, {
+//     scale: 2,
+//     useCORS: true,
+//     backgroundColor: '#ffffff'
+//   }).then(canvas => {
+//     const link = document.createElement('a');
+//     link.download = 'InnerMe_Checkup_Report.png';
+//     link.href = canvas.toDataURL('image/png');
+//     link.click();
+//   }).catch(error => {
+//     console.error('Error:', error);
+//     alert('이미지 저장에 실패했습니다. 다시 시도해주세요.');
+//   });
+// }
+
 function saveAsImage() {
+  const saveBtn = document.querySelector('.btn-save');
+  const shareBtn = document.querySelector('.btn-share');
+  const shareMessage = document.getElementById('share-message');
+  
+  saveBtn.style.display = 'none';
+  shareBtn.style.display = 'none';
+  shareMessage.style.display = 'none';
+  
   const element = document.body;
+  
   html2canvas(element, {
     scale: 2,
     useCORS: true,
     backgroundColor: '#ffffff'
   }).then(canvas => {
+    saveBtn.style.display = 'flex';
+    shareBtn.style.display = 'flex';
+    
     const link = document.createElement('a');
-    link.download = 'InnerMe_Checkup_Report.png';
+    link.download = 'InnerMe_Checkup_결과.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
   }).catch(error => {
+    saveBtn.style.display = 'flex';
+    shareBtn.style.display = 'flex';
+    
     console.error('Error:', error);
-    alert('이미지 저장에 실패했습니다. 다시 시도해주세요.');
+    alert('이미지 저장에 실패했습니다.');
   });
 }
 
