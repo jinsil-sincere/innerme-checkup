@@ -329,7 +329,7 @@ function createChartAnalysis(scores) {
       }
     }
     
-    analysisText += `<br><br>전체 평균 점수는 <span class="highlight-strength">${avgScore}점</span>이며, `;
+    analysisText += `<br><br>전체 평균 점수는 <span class="highlight-strength">${avgScore}점</span>(10점 만점)이며, `;
     
     if (maxScore - minScore > 3) {
       if (weakestDomains.length === 1) {
