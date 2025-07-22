@@ -43,23 +43,6 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 
-// function saveAsImage() {
-//   const element = document.body;
-//   html2canvas(element, {
-//     scale: 2,
-//     useCORS: true,
-//     backgroundColor: '#ffffff'
-//   }).then(canvas => {
-//     const link = document.createElement('a');
-//     link.download = 'InnerMe_Checkup_Report.png';
-//     link.href = canvas.toDataURL('image/png');
-//     link.click();
-//   }).catch(error => {
-//     console.error('Error:', error);
-//     alert('이미지 저장에 실패했습니다. 다시 시도해주세요.');
-//   });
-// }
-
 function saveAsImage() {
   const saveBtn = document.querySelector('.btn-save');
   const shareBtn = document.querySelector('.btn-share');
@@ -113,5 +96,60 @@ function shareResults() {
 
 window.saveAsImage = saveAsImage;
 window.shareResults = shareResults;
+
+
+
+
+
+function createChartAnalysis(scores) {
+    const analysisBox = document.getElementById('chart-analysis');
+    if (!analysisBox) return;
+    const domainNames = ['감정 돌보기', '유연하게 생각하기', '나를 수용하기', '편안한 관계맺기', '삶의 방향 세우기'];
+    const shortNames = ['감정 돌보기', '유연하게 생각하기', '나를 수용하기', '편안한 관계맺기', '삶의 방향 세우기'];
+
+    const maxScore = Math.max(...scores);
+    const maxIndices = scores.map((score, index) => score === maxScore ? index : -1).filter(index => index !== -1);
+    const strongestDomains = maxIndices.map(index => shortNames[index]);
+    const minScore = Math.min(...scores);
+    const minIndices = scores.map((score, index) => score === minScore ? index : -1).filter(index => index !== -1);
+    const weakestDomains = minIndices.map(index => shortNames[index]);
+    
+    const avgScore = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+    
+    let analysisText = '';
+    
+    if (maxScore >= 8) {
+      if (strongestDomains.length === 1) {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains[0]}'</span>입니다. 이 영역에서 매우 우수한 역량을 보여주고 있습니다.`;
+      } else {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains.join("', '")}'</span>입니다. 이 영역들에서 매우 우수한 역량을 보여주고 있습니다.`;
+      }
+    } else if (maxScore >= 6) {
+      if (strongestDomains.length === 1) {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains[0]}'</span>입니다. 이 영역에서 우수한 역량을 보여주고 있습니다.`;
+      } else {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains.join("', '")}'</span>입니다. 이 영역들에서 우수한 역량을 보여주고 있습니다.`;
+      }
+    } else {
+      if (strongestDomains.length === 1) {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains[0]}'</span>입니다. 이 영역을 더 발전시킬 수 있는 여지가 있습니다.`;
+      } else {
+        analysisText = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongestDomains.join("', '")}'</span>입니다. 이 영역들을 더 발전시킬 수 있는 여지가 있습니다.`;
+      }
+    }
+    
+    analysisText += `<br><br>전체 평균 점수는 <span class="highlight-strength">${avgScore}점</span>이며, `;
+    
+    if (maxScore - minScore > 3) {
+      if (weakestDomains.length === 1) {
+        analysisText += `점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakestDomains[0]}'</span> 영역에 더 많은 관심을 기울여보세요.`;
+      } else {
+        analysisText += `점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakestDomains.join("', '")}'</span> 영역들에 더 많은 관심을 기울여보세요.`;
+      }
+    } else {
+      analysisText += `점수가 비교적 균형 잡혀 있습니다. 모든 영역에서 고르게 발전하고 있습니다.`;
+    }
+    analysisBox.innerHTML = analysisText;
+  }
 
 
