@@ -94,8 +94,7 @@ function saveAsImage() {
 
 
 function shareResults() {
-  const baseUrl = window.location.origin + window.location.pathname.replace('results.html', '');
-  const url = baseUrl + 'index.html';
+  const url = window.location.href.replace('results.html', 'index.html');
   const textArea = document.createElement('textarea');
   textArea.value = url;
   document.body.appendChild(textArea);
