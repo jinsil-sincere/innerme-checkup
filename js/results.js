@@ -41,48 +41,49 @@ document.querySelector(avgScore < 2.5 ? '.result-age1' : avgScore < 5.0 ? '.resu
 
 
 
+
+
 function saveAsImage() {
   const element = document.getElementById('result-content');
-  const options = {
-    scale: 2, 
+  
+  html2canvas(element, {
+    scale: 2,
     useCORS: true,
-    backgroundColor: '#ffffff', 
-    width: element.scrollWidth,
-    height: element.scrollHeight,
-    scrollX: 0,
-    scrollY: 0
-  };
-  html2canvas(element, options).then(canvas => {
+    backgroundColor: '#ffffff'
+  }).then(canvas => {
     const link = document.createElement('a');
-    link.download = `InnerMe_Checkup_결과_${new Date().toLocaleDateString('ko-KR')}.png`;
+    link.download = 'InnerMe_Checkup_결과.png';
     link.href = canvas.toDataURL('image/png');
-    document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
   }).catch(error => {
-    console.error('이미지 저장 중 오류가 발생했습니다:', error);
+    console.error('Error:', error);
     alert('이미지 저장에 실패했습니다. 다시 시도해주세요.');
   });
 }
 
-
 function shareResults() {
-  navigator.clipboard.writeText(window.location.origin + '/index.html')
-    .then(() => {
-      const msg = document.getElementById('share-message');
-      msg.textContent = '공유 링크가 복사되었습니다!';
-      msg.style.display = 'block';
-      setTimeout(() => msg.style.display = 'none', 3000);
-    })
-    .catch(() => {
-      const msg = document.getElementById('share-message');
-      msg.textContent = '링크 복사에 실패했습니다. 브라우저 주소창에서 링크를 복사해주세요.';
-      msg.style.display = 'block';
-      msg.style.color = 'red';
-      setTimeout(() => msg.style.display = 'none', 3000);
-    });
+  const url = window.location.href.replace('results.html', 'index.html');
+  const textArea = document.createElement('textarea');
+  textArea.value = url;
+  document.body.appendChild(textArea);
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    const msg = document.getElementById('share-message');
+    msg.textContent = '공유 링크가 복사되었습니다!';
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 2000);
+  } catch (err) {
+    document.body.removeChild(textArea);
+    
+    const msg = document.getElementById('share-message');
+    msg.innerHTML = `링크: <br><strong>${url}</strong><br>위 링크를 복사해서 공유해주세요`;
+    msg.style.display = 'block';
+  }
 }
-
 
 
 
