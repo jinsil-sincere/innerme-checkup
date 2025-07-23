@@ -124,8 +124,9 @@
 .domain-image {
   width: 25px;
   height: auto;
-  display: flex;
-  justify-content: center; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .score-box{
