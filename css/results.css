@@ -149,7 +149,6 @@
 
   line-height: 1.3;
   text-align: center;
-  margin-bottom: 15px;
 }
 .domain-image {
   width: 20px;
@@ -168,7 +167,7 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .score-box{
@@ -214,8 +213,8 @@
 .lecture-box {
   display: flex;
   justify-content: right; 
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 .lecture-box a {
   display: flex;
