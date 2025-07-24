@@ -171,9 +171,8 @@
   margin-bottom: 20px;
 }
 
-
 .score-box{
-  height: 110px;
+  height: 80px;
   background-color: #ffffff;
 
   display: flex;
