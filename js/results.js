@@ -251,7 +251,7 @@ function createChartAnalysis(scores) {
   let text = `당신의 강점이 되는 영역은 <span class="highlight-strength">'${strongest.join("', '")}'</span>입니다. `;
   text += max >= 8 ? '이 영역에서 상위 10% 이내의 매우 우수한 역량을 보여주고 있습니다. ' : max >= 6 ? '이 영역에서 평균 이상의 우수한 역량을 보여주고 있습니다. ' : '이 영역을 더 발전시킬 수 있는 여지가 있습니다. ';
   text += max - min > 2 ? `<br><br>영역별 점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 더 관심을 기울여보세요.` 
-                        : `<br><br>영역별 점수가 비슷한 편입니다. 한 단계 더 성장하기 위해 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 조금 더 관심을 기울여보세요.`;
+                        : `<br><br>영역별 점수가 비슷한 편입니다. 한 단계 더 성장하려면 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 조금 더 관심을 기울여보세요.`;
   
   box.innerHTML = text;
 }
