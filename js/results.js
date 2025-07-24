@@ -380,7 +380,5 @@ function createMindAgeVisualization() {
   ctx.fillText('당신의 마음 나이', pointerX, startY + chartHeight + 36.5);
 }
 
-
 createMindAgeVisualization();
-createRadarChart(scores);
-createChartAnalysis(scores);
+
