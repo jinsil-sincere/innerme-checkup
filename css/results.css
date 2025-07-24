@@ -28,7 +28,6 @@
 }
 
 
-
 .result-box-main{
   width: 95%;
   max-width: 500px;
@@ -41,6 +40,18 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 35px;
+}
+
+
+
+.mind-age-images {
+  width: 100%;
+  max-width: 400px; 
+  margin: 15px auto -35px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  display: flex;
 }
 .result-age1, .result-age2, .result-age3, .result-age4 {
   font-size: 14px; 
@@ -65,6 +76,9 @@
  margin-top: 8px;
  margin-bottom: 12px;
 }
+
+
+
 
 .sub-title {
   font-size: 16.5px; 
