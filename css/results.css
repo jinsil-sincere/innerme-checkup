@@ -201,10 +201,11 @@
   color: #aeaeae;
   margin-left: 3px;
 }
+
 .lecture-box {
   display: flex;
   justify-content: right; 
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 2px;
 }
 .lecture-box a {
