@@ -248,9 +248,10 @@ function createChartAnalysis(scores) {
   const strongest = scores.map((s, i) => s === max ? names[i] : null).filter(Boolean);
   const weakest = scores.map((s, i) => s === min ? names[i] : null).filter(Boolean);
   
-  let text = `당신의 가장 강점이 되는 영역은 <span class="highlight-strength">'${strongest.join("', '")}'</span>입니다. `;
-  text += max >= 8 ? '이 영역에서 매우 우수한 역량을 보여주고 있습니다. ' : max >= 6 ? '이 영역에서 우수한 역량을 보여주고 있습니다. ' : '이 영역을 더 발전시킬 수 있는 여지가 있습니다. ';
-  text += max - min > 3 ? `<br><br>영역별 점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 더 관심을 기울여보세요.` : `<br><br>영역별 점수가 비슷한 편입니다. 한 단계 더 성장하려면 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 조금 더 관심을 기울여보세요.`;
+  let text = `당신의 강점이 되는 영역은 <span class="highlight-strength">'${strongest.join("', '")}'</span>입니다. `;
+  text += max >= 8 ? '이 영역에서 상위 10% 이내의 매우 우수한 역량을 보여주고 있습니다. ' : max >= 6 ? '이 영역에서 평균 이상의 우수한 역량을 보여주고 있습니다. ' : '이 영역을 더 발전시킬 수 있는 여지가 있습니다. ';
+  text += max - min > 2 ? `<br><br>영역별 점수 차이가 큰 편입니다. 균형 있는 발전을 위해 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 더 관심을 기울여보세요.` 
+                        : `<br><br>영역별 점수가 비슷한 편입니다. 한 단계 더 성장하기 위해 <span class="highlight-strength">'${weakest.join("', '")}'</span> 영역에 조금 더 관심을 기울여보세요.`;
   
   box.innerHTML = text;
 }
@@ -293,8 +294,7 @@ function createMindAgeVisualization() {
   if (!canvas) return;
   
   const ctx = canvas.getContext('2d');
-  
-  // 고해상도 지원
+
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
   
@@ -305,31 +305,26 @@ function createMindAgeVisualization() {
   const width = rect.width;
   const height = rect.height;
   
-  // 모바일 반응형
   const isMobile = window.innerWidth <= 768;
   const barHeight = isMobile ? 40 : 50;
   const fontSize = isMobile ? 12 : 14;
   const pointerSize = isMobile ? 8 : 10;
   
-  // 여백 설정
   const margin = { top: 5, right: 15, bottom: 50, left: 15 };
   const chartWidth = width - margin.left - margin.right;
   const chartHeight = barHeight;
   
-  // 중앙 위치 계산
   const startY = (height - chartHeight) / 2;
   
   ctx.clearRect(0, 0, width, height);
   
-  // 단계별 구간 정의 (파란색 계열, 점점 진하게)
   const stages = [
     { name: '아기', range: [0, 2.5], color: '#e0e7eeff', textColor: '#48484aff' },
     { name: '어린이', range: [2.5, 5.0], color: '#c3d4e7ff', textColor: '#48484aff' },
     { name: '청소년', range: [5.0, 7.5], color: '#9dbcddff', textColor: '#48484aff' },
-    { name: '성인', range: [7.5, 10], color: '#6d99c8ff', textColor: '#48484aff' }
+    { name: '어른', range: [7.5, 10], color: '#6d99c8ff', textColor: '#48484aff' }
   ];
   
-  // 배경 막대 그리기
   stages.forEach(stage => {
     const startX = margin.left + (stage.range[0] / 10) * chartWidth;
     const stageWidth = ((stage.range[1] - stage.range[0]) / 10) * chartWidth;
