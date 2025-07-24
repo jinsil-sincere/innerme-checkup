@@ -376,9 +376,9 @@ function createMindAgeVisualization() {
   ctx.fill();
   
   ctx.fillStyle = '#de596fff';
-  ctx.font = `500 ${fontSize+2.5}px Arial`;
+  ctx.font = `500 ${fontSize+2}px Arial`;
   ctx.textAlign = 'center';
-  ctx.fillText('당신의 마음 나이', pointerX, startY + chartHeight + 36.5);
+  ctx.fillText('당신의 마음 나이', pointerX, startY + chartHeight + 40);
 }
 
 
