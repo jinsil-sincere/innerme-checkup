@@ -18,6 +18,18 @@
  transition: 0.2s;
 }
 
+.intro{
+  font-size: 14px;
+  font-weight: 400;
+  color:#709ac8;;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+
 
 
 .question-box{
