@@ -333,7 +333,7 @@ function createMindAgeVisualization() {
     ctx.fillRect(startX, startY, stageWidth, chartHeight);
     
 
-    ctx.strokeStyle = '#DDDDDD';
+    ctx.strokeStyle = '#ffffffff';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(startX, startY);
