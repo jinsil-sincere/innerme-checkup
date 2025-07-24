@@ -215,12 +215,12 @@
   color: inherit;        
 }
 .lecture-image {
-  width: 20px;
+  width: 15px;
   height: auto;
   padding-left:20px;
 }
 .lecture-message {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
   color: #373b42;
   line-height: 1.3;
