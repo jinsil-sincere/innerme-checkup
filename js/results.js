@@ -1,4 +1,4 @@
-onst responses = JSON.parse(localStorage.getItem("innermeResponses")) || {};
+const responses = JSON.parse(localStorage.getItem("innermeResponses")) || {};
 
 const domains = [
   { name: 'emotion', questions: [1,2,3], mean: 5.8, sd: 1.2 },
@@ -294,6 +294,7 @@ function createMindAgeVisualization() {
   
   const ctx = canvas.getContext('2d');
   
+  // 고해상도 지원
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.getBoundingClientRect();
   
@@ -304,19 +305,23 @@ function createMindAgeVisualization() {
   const width = rect.width;
   const height = rect.height;
   
+  // 모바일 반응형
   const isMobile = window.innerWidth <= 768;
   const barHeight = isMobile ? 40 : 50;
   const fontSize = isMobile ? 12 : 14;
   const pointerSize = isMobile ? 8 : 10;
   
+  // 여백 설정
   const margin = { top: 5, right: 15, bottom: 50, left: 15 };
   const chartWidth = width - margin.left - margin.right;
   const chartHeight = barHeight;
   
+  // 중앙 위치 계산
   const startY = (height - chartHeight) / 2;
   
   ctx.clearRect(0, 0, width, height);
   
+  // 단계별 구간 정의 (파란색 계열, 점점 진하게)
   const stages = [
     { name: '아기', range: [0, 2.5], color: '#e0e7eeff', textColor: '#48484aff' },
     { name: '어린이', range: [2.5, 5.0], color: '#c3d4e7ff', textColor: '#48484aff' },
@@ -324,6 +329,7 @@ function createMindAgeVisualization() {
     { name: '성인', range: [7.5, 10], color: '#6d99c8ff', textColor: '#48484aff' }
   ];
   
+  // 배경 막대 그리기
   stages.forEach(stage => {
     const startX = margin.left + (stage.range[0] / 10) * chartWidth;
     const stageWidth = ((stage.range[1] - stage.range[0]) / 10) * chartWidth;
@@ -380,5 +386,5 @@ function createMindAgeVisualization() {
   ctx.fillText('당신의 마음 나이', pointerX, startY + chartHeight + 36.5);
 }
 
-createMindAgeVisualization();
 
+createMindAgeVisualization();
