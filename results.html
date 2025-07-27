@@ -70,7 +70,26 @@
      <div class="result-level result-emotion"> <img src="./images/emotion.png" class="domain-image"> <div class="domain-title"> 감정 돌보기 </div> </div>
      <div class="result-score result-emotion"> <span class="big-score">70</span><span class="small-score"> / 10점</span> </div>
    </div>
-    
+  
+   <div class="accordion-toggle" onclick="toggleAccordion('emotion')">
+     <span class="toggle-text">세부 결과 보기</span>
+     <span class="toggle-icon">▼</span>
+   </div>
+   <div class="accordion-content" id="emotion-details">
+     <div class="detail-item">
+       <div class="detail-label"> 내 욕구 알아차리기 (감정이해) </div>
+       <div class="detail-status" id="emotion-understanding-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 감정 받아들이기 (감정수용) </div>
+       <div class="detail-status" id="emotion-acceptance-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 감정 다스리기 (감정조절) </div>
+       <div class="detail-status" id="emotion-regulation-status">양호</div>
+     </div>
+   </div>
+  
    <div class="lecture-box">
      <a href="https://youtu.be/uvy9T_coMYw?si=3MeW6TOen_QB4iUy" target="_blank"> 
      <img src="./images/lecture2.png" class="lecture-image"> <div class="lecture-message">감정이 중요한 이유</div></a></div>
@@ -85,6 +104,25 @@
    <div class="score-box">
      <div class="result-level result-thinking"> <img src="./images/thinking.png" class="domain-image"> <div class="domain-title">유연하게 생각하기</div> </div>
      <div class="result-score result-thinking"> <span class="big-score">70</span><span class="small-score"> / 10점</span> </div>
+   </div>
+
+   <div class="accordion-toggle" onclick="toggleAccordion('thinking')">
+     <span class="toggle-text">세부 결과 보기</span>
+     <span class="toggle-icon">▼</span>
+   </div>
+   <div class="accordion-content" id="thinking-details">
+     <div class="detail-item">
+       <div class="detail-label"> 완벽하지 않아도 괜찮다 생각하기 (나에 대한 유연함) </div>
+       <div class="detail-status" id="thinking-perfectionism-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 타인의 다름을 이해하기 (타인에 대한 유연함) </div>
+       <div class="detail-status" id="thinking-perspective-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 어려운 상황을 받아들이기 (상황에 대한 유연함) </div>
+       <div class="detail-status" id="thinking-difficulty-status">양호</div>
+     </div>
    </div>
 
    <div class="lecture-box">
@@ -103,6 +141,26 @@
      <div class="result-score result-self"> <span class="big-score">70</span><span class="small-score"> / 10점</span> </div>
    </div>
 
+  <div class="accordion-toggle" onclick="toggleAccordion('self')">
+     <span class="toggle-text">세부 영역 보기</span>
+     <span class="toggle-icon">▼</span>
+   </div>
+   
+   <div class="accordion-content" id="self-details">
+     <div class="detail-item">
+       <div class="detail-label"> 부족한 나도 OK하기 (무조건적 자기수용) </div>
+       <div class="detail-status" id="self-acceptance-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 나를 믿어주기 (자기신뢰) </div>
+       <div class="detail-status" id="self-trust-status">부족</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 나에게 다정하기 (자기친절)</div>
+       <div class="detail-status" id="self-kindness-status">충분</div>
+     </div>
+   </div>
+
    <div class="lecture-box">
      <a href="https://youtu.be/DFqMHcmo8m4?si=IBMoiwlSS_6rvNlb" target="_blank"> 
      <img src="./images/lecture2.png" class="lecture-image"> <div class="lecture-message">자존감을 키우려면</div></a></div>  
@@ -118,7 +176,27 @@
      <div class="result-level result-relationship"> <img src="./images/relationship.png" class="domain-image"><div class="domain-title">편안한 관계맺기</div> </div>
      <div class="result-score result-relationship"> <span class="big-score">70</span><span class="small-score"> / 10점</span> </div>
   </div>
-    
+
+   <div class="accordion-toggle" onclick="toggleAccordion('relationship')">
+     <span class="toggle-text">세부 영역 보기</span>
+     <span class="toggle-icon">▼</span>
+   </div>
+   
+   <div class="accordion-content" id="relationship-details">
+     <div class="detail-item">
+       <div class="detail-label"> 친밀한 관계 맺기 (친밀함) </div>
+       <div class="detail-status" id="relationship-intimacy-status">충분</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 믿을 수 있는 관계 맺기 (신뢰성) </div>
+       <div class="detail-status" id="relationship-trust-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 마음 표현하기 (표현성) </div>
+       <div class="detail-status" id="relationship-expression-status">부족</div>
+     </div>
+   </div>
+
   <div class="lecture-box">
      <a href="https://youtu.be/55AZHSMFuoE?si=ok-unA-_zgpTNjyY" target="_blank"> 
      <img src="./images/lecture2.png" class="lecture-image"> <div class="lecture-message">진정한 관계를 맺는 방법</div></a></div>
@@ -134,7 +212,27 @@
      <div class="result-level result-life"> <img src="./images/life.png" class="domain-image"> <div class="domain-title">삶의 방향 세우기</div> </div>
      <div class="result-score result-life"> <span class="big-score">70</span><span class="small-score"> / 10점</span> </div>
    </div>
-  
+
+   <div class="accordion-toggle" onclick="toggleAccordion('life')">
+     <span class="toggle-text">세부 영역 보기</span>
+     <span class="toggle-icon">▼</span>
+   </div>
+   
+   <div class="accordion-content" id="life-details">
+     <div class="detail-item">
+       <div class="detail-label"> 내가 원하는 것 선택하기 (주체성) </div>
+       <div class="detail-status" id="life-autonomy-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 나답게 살기 (가치추구) </div>
+       <div class="detail-status" id="life-values-status">양호</div>
+     </div>
+     <div class="detail-item">
+       <div class="detail-label"> 소소한 행복 누리기 (일상 긍정정서) </div>
+       <div class="detail-status" id="life-positivity-status">양호</div>
+     </div>
+   </div>
+    
   <div class="lecture-box">
      <a href="https://youtu.be/aXZ4HtDN3KI?si=KEbJOZtWP4VK2VNE" target="_blank"> 
      <img src="./images/lecture2.png" class="lecture-image"> <div class="lecture-message">내 삶을 지탱하고 있는 것은</div></a></div>
