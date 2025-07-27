@@ -422,13 +422,15 @@
   min-width: 45px;
 }
 .detail-status.status-부족 {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #f5c2c7;
+  color: #842029;
 }
+
 .detail-status.status-양호 {
-  background-color: #fff2cc;
-  color: #664d03;
+  background-color: #ffecb5;
+  color: #997404;
 }
+
 .detail-status.status-충분 {
   background-color: #e8f1fd;
   color: #709ac8;
