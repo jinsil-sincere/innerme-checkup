@@ -383,3 +383,160 @@ function createMindAgeVisualization() {
 
 
 createMindAgeVisualization();
+
+
+
+
+function calculateEmotionDetails() {
+  const emotionQuestions = [1, 2, 3]; // 감정이해, 감정수용, 감정조절
+  const labels = ['understanding', 'acceptance', 'regulation'];
+  
+  emotionQuestions.forEach((questionNum, index) => {
+    const response = parseInt(responses[questionNum]) || 0;
+
+    let status = '';
+    if (response >= 1 && response <= 2) {
+      status = '부족';
+    } else if (response === 3) {
+      status = '양호';
+    } else if (response === 4) {
+      status = '충분';
+    }
+    
+    const statusElement = document.getElementById(`emotion-${labels[index]}-status`);
+    
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.className = `detail-status status-${status}`;
+    }
+  });
+}
+
+
+function calculateThinkingDetails() {
+  const thinkingQuestions = [4, 5, 6]; // 완벽주의 극복, 타인관점 고려, 어려움 수용
+  const labels = ['perfectionism', 'perspective', 'difficulty'];
+  
+  thinkingQuestions.forEach((questionNum, index) => {
+    const response = parseInt(responses[questionNum]) || 0;
+    
+    let status = '';
+    if (response >= 1 && response <= 2) {
+      status = '부족';
+    } else if (response === 3) {
+      status = '양호';
+    } else if (response === 4) {
+      status = '충분';
+    }
+    
+    const statusElement = document.getElementById(`thinking-${labels[index]}-status`);
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.className = `detail-status status-${status}`;
+    }
+  });
+}
+
+
+function calculateSelfDetails() {
+  const selfQuestions = [7, 8, 9]; // 무조건적 자기수용, 자기신뢰, 자기친절
+  const labels = ['acceptance', 'trust', 'kindness'];
+  
+  selfQuestions.forEach((questionNum, index) => {
+    const response = parseInt(responses[questionNum]) || 0;
+    
+    let status = '';
+    if (response >= 1 && response <= 2) {
+      status = '부족';
+    } else if (response === 3) {
+      status = '양호';
+    } else if (response === 4) {
+      status = '충분';
+    }
+    
+    const statusElement = document.getElementById(`self-${labels[index]}-status`);
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.className = `detail-status status-${status}`;
+    }
+  });
+}
+
+
+function calculateRelationshipDetails() {
+  const relationshipQuestions = [10, 11, 12]; // 친밀함, 신뢰감, 표현성
+  const labels = ['intimacy', 'trust', 'expression'];
+  
+  relationshipQuestions.forEach((questionNum, index) => {
+    const response = parseInt(responses[questionNum]) || 0;
+    
+    let status = '';
+    if (response >= 1 && response <= 2) {
+      status = '부족';
+    } else if (response === 3) {
+      status = '양호';
+    } else if (response === 4) {
+      status = '충분';
+    }
+    
+    const statusElement = document.getElementById(`relationship-${labels[index]}-status`);
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.className = `detail-status status-${status}`;
+    }
+  });
+}
+
+
+function calculateLifeDetails() {
+  const lifeQuestions = [13, 14, 15]; // 주체성, 가치 추구, 소소한 행복
+  const labels = ['autonomy', 'values', 'positivity'];
+  
+  lifeQuestions.forEach((questionNum, index) => {
+    const response = parseInt(responses[questionNum]) || 0;
+    
+    let status = '';
+    if (response >= 1 && response <= 2) {
+      status = '부족';
+    } else if (response === 3) {
+      status = '양호';
+    } else if (response === 4) {
+      status = '충분';
+    }
+    
+    const statusElement = document.getElementById(`life-${labels[index]}-status`);
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.className = `detail-status status-${status}`;
+    }
+  });
+}
+
+
+function toggleAccordion(domainName) {
+  const toggle = document.querySelector(`[onclick="toggleAccordion('${domainName}')"]`);
+  const content = document.getElementById(`${domainName}-details`);
+  
+  if (toggle && content) {
+    const isActive = content.classList.contains('active');
+    
+    if (isActive) {
+      content.classList.remove('active');
+      toggle.classList.remove('active');
+      toggle.querySelector('.toggle-text').textContent = '세부 영역 보기';
+    } else {
+      content.classList.add('active');
+      toggle.classList.add('active');
+      toggle.querySelector('.toggle-text').textContent = '세부 영역';
+    }
+  }
+}
+
+
+calculateEmotionDetails();
+calculateThinkingDetails();
+calculateSelfDetails();
+calculateRelationshipDetails();
+calculateLifeDetails();
+
+window.toggleAccordion = toggleAccordion;
