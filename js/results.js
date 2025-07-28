@@ -523,11 +523,11 @@ function toggleAccordion(domainName) {
     if (isActive) {
       content.classList.remove('active');
       toggle.classList.remove('active');
-      toggle.querySelector('.toggle-text').textContent = '세부 영역 보기';
+      toggle.querySelector('.toggle-text').textContent = '세부 결과 보기';
     } else {
       content.classList.add('active');
       toggle.classList.add('active');
-      toggle.querySelector('.toggle-text').textContent = '세부 영역';
+      toggle.querySelector('.toggle-text').textContent = '세부 결과';
     }
   }
 }
